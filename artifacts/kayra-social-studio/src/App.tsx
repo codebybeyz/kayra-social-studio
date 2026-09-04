@@ -19,11 +19,14 @@ const services = [
 const projects = [
   { id: 'youtube-portfolio', title: 'YouTube Projects', category: 'Content', index: '01', tone: 'youtube', tag: 'Video / Creative Projects', platform: 'YouTube', href: 'https://www.youtube.com/channel/UCHIrWLsUakvz_qAnUwMWHwQ', cta: 'Kanalı Gör' },
   { id: 'instagram-portfolio', title: 'Instagram Projects', category: 'Social Media', index: '02', tone: 'instagram', tag: 'Social / Digital Work', platform: 'Instagram', href: 'https://www.instagram.com/kayrasocialstudio', cta: 'Profili Gör' },
-  { id: 'web-01', title: 'Web Project 01', category: 'Web Design', index: '03', tone: 'sky', tag: 'Interface / Experience' },
-  { id: 'social-01', title: 'Social Media Project 01', category: 'Social Media', index: '04', tone: 'lilac', tag: 'Strategy / Content' },
-  { id: 'content-01', title: 'Content Project 01', category: 'Content', index: '05', tone: 'peach', tag: 'Art Direction / Motion' },
-  { id: 'branding-01', title: 'Branding Project 01', category: 'Branding', index: '06', tone: 'ink', tag: 'Identity / Digital' },
-  { id: 'digital-01', title: 'Digital Project 01', category: 'Digital Projects', index: '07', tone: 'violet', tag: 'Concept / Product' },
+  { id: 'pet-care-01', title: 'Pet Care Awareness', category: 'Social Media', index: '03', tone: 'lime', tag: 'Visual Design / Social Media', image: '/assets/project-pet-care.jpg', imageAlt: 'Evcil hayvanlar için sıcak hava bilgilendirme tasarımı' },
+  { id: 'therapy-01', title: 'Therapy Visual', category: 'Content', index: '04', tone: 'ink', tag: 'Art Direction / Social Media', image: '/assets/project-therapy.png', imageAlt: 'Terapi temalı sosyal medya tasarımı' },
+  { id: 'street-animals-01', title: 'Street Animal Awareness', category: 'Content', index: '05', tone: 'sky', tag: 'Campaign / Content', image: '/assets/project-street-animals.jpg', imageAlt: 'Sokak hayvanları günü farkındalık tasarımı' },
+  { id: 'dental-01', title: 'Dental Social Post', category: 'Digital Projects', index: '06', tone: 'violet', tag: 'Digital Design / Content', image: '/assets/project-dental.jpg', imageAlt: 'Diş kliniği için sosyal medya tasarımı' },
+  { id: 'web-01', title: 'Web Project 01', category: 'Web Design', index: '07', tone: 'sky', tag: 'Interface / Experience' },
+  { id: 'social-01', title: 'Social Media Project 01', category: 'Social Media', index: '08', tone: 'lilac', tag: 'Strategy / Content' },
+  { id: 'branding-01', title: 'Branding Project 01', category: 'Branding', index: '09', tone: 'ink', tag: 'Identity / Digital' },
+  { id: 'digital-01', title: 'Digital Project 01', category: 'Digital Projects', index: '10', tone: 'violet', tag: 'Concept / Product' },
 ];
 
 const values = [
@@ -47,19 +50,19 @@ function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; 
   return <div className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
-function ProjectArt({ tone, platform }: { tone: string; platform?: string }) {
+function ProjectArt({ tone, platform, image, imageAlt }: { tone: string; platform?: string; image?: string; imageAlt?: string }) {
   const PlatformIcon = platform === 'YouTube' ? Youtube : platform === 'Instagram' ? Instagram : null;
   return (
-    <div className={`project-art relative h-full min-h-[230px] overflow-hidden ${tone === 'youtube' ? 'bg-[#d8efff]' : tone === 'instagram' ? 'bg-[#e5ddff]' : tone === 'sky' ? 'bg-[#c7edff]' : tone === 'lilac' ? 'bg-[#d8d1ff]' : tone === 'peach' ? 'bg-[#f3dfdf]' : tone === 'ink' ? 'bg-[#343452]' : 'bg-[#c3bbef]'}`}>
-      <div className="absolute left-[14%] top-[16%] h-[67%] w-[72%] rotate-[-6deg] rounded-[28px] border border-white/60 bg-white/55 shadow-[12px_22px_35px_rgba(45,47,83,.12)] backdrop-blur-sm">
+    <div className={`project-art relative h-full min-h-[230px] overflow-hidden ${tone === 'youtube' ? 'bg-[#d8efff]' : tone === 'instagram' ? 'bg-[#e5ddff]' : tone === 'lime' ? 'bg-[#c9ff73]' : tone === 'sky' ? 'bg-[#c7edff]' : tone === 'lilac' ? 'bg-[#d8d1ff]' : tone === 'peach' ? 'bg-[#f3dfdf]' : tone === 'ink' ? 'bg-[#343452]' : 'bg-[#c3bbef]'}`}>
+      {image ? <img src={image} alt={imageAlt ?? 'Kayra Social Studio proje görseli'} className="absolute inset-0 h-full w-full object-cover" /> : <div className="absolute left-[14%] top-[16%] h-[67%] w-[72%] rotate-[-6deg] rounded-[28px] border border-white/60 bg-white/55 shadow-[12px_22px_35px_rgba(45,47,83,.12)] backdrop-blur-sm">
         <div className="absolute left-[9%] right-[9%] top-[13%] h-2 rounded-full bg-[#6c6a9b]/35" />
         <div className="absolute left-[9%] top-[28%] h-16 w-[54%] rounded-xl bg-white/75" />
         <div className="absolute bottom-[15%] right-[9%] h-11 w-[29%] rounded-xl bg-[#aaa2e3]/65" />
         <div className="absolute bottom-[15%] left-[9%] h-11 w-[19%] rounded-xl bg-[#a9dbef]/75" />
-      </div>
+      </div>}
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full border-[18px] border-white/25" />
       {PlatformIcon && <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/70 px-3 py-2 text-[#343452] shadow-sm backdrop-blur-sm"><PlatformIcon size={14} strokeWidth={1.8} /><span className="font-mono text-[9px] uppercase tracking-[.14em]">{platform}</span></div>}
-      <div className="absolute bottom-6 left-6 font-mono text-[9px] uppercase tracking-[.22em] text-[#343452]/55">KSS / 2024</div>
+      {!image && <div className="absolute bottom-6 left-6 font-mono text-[9px] uppercase tracking-[.22em] text-[#343452]/55">KSS / 2024</div>}
     </div>
   );
 }
@@ -214,7 +217,7 @@ function Home() {
             {filteredProjects.map((project, index) => {
               const cardClassName = `project-card rounded-[22px] bg-[#353854] ${index === 0 && filteredProjects.length > 1 ? 'grid md:grid-cols-[1.2fr_.8fr]' : ''}`;
               const cardContent = <>
-                <div className={index === 0 && filteredProjects.length > 1 ? 'min-h-[310px]' : 'min-h-[245px]'}><ProjectArt tone={project.tone} platform={project.platform} /></div>
+                <div className={index === 0 && filteredProjects.length > 1 ? 'min-h-[310px]' : 'min-h-[245px]'}><ProjectArt tone={project.tone} platform={project.platform} image={project.image} imageAlt={project.imageAlt} /></div>
                 <div className="flex flex-col justify-between p-6 md:p-7"><div className="flex items-center justify-between"><span className="font-mono text-[10px] text-[#a8abc0]">{project.index} / {project.category}</span><span className="project-overlay flex h-9 w-9 items-center justify-center rounded-full bg-[#c9c2ff] text-[#252946]"><ArrowUpRight size={15} /></span></div><div className="mt-16"><h3 className="font-serif text-2xl tracking-[-.03em] text-[#f7f8fc]">{project.title}</h3><p className="mt-2 font-mono text-[9px] uppercase tracking-[.16em] text-[#a8abc0]">{project.tag}</p>{project.href && <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-[#c9c2ff]">{project.cta} <ArrowUpRight size={13} /></span>}</div></div>
               </>;
               return <Reveal key={project.id} delay={index * 70} className={index === 0 && filteredProjects.length > 1 ? 'md:col-span-2' : ''}>{project.href ? <a href={project.href} target="_blank" rel="noreferrer" className={cardClassName} data-testid={`card-project-${project.id}`}>{cardContent}</a> : <article className={cardClassName} data-testid={`card-project-${project.id}`}>{cardContent}</article>}</Reveal>;
