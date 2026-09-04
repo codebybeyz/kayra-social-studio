@@ -115,13 +115,13 @@ function Home() {
   return (
     <main className="studio-shell min-h-[100dvh] bg-[#f3faff] text-[#252946]">
       <header className="relative z-30">
-        <div className="section-wrap flex items-center justify-between py-7">
-          <a href="#home" aria-label="Kayra Social Studio ana sayfa" className="relative z-40" data-testid="link-brand">
+        <div className="section-wrap relative flex items-center justify-between py-7">
+          <a href="#home" aria-label="Kayra Social Studio ana sayfa" className="relative left-1/2 z-40 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2" data-testid="link-brand">
             <img src="/assets/kayra-logo.png" alt="KAYRA SOCIAL STUDIO" className="logo-img" />
           </a>
-          <nav className="hidden items-center gap-9 md:flex" aria-label="Ana navigasyon">
+          <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Ana navigasyon">
             {navItems.map((item) => <a key={item.href} href={item.href} className="nav-link text-[11px] font-semibold uppercase tracking-[.15em]" data-testid={`link-nav-${item.label.toLowerCase()}`}>{item.label}</a>)}
-            <a href="#contact" className="solid-button ml-3 inline-flex items-center gap-2 rounded-full bg-[#252946] px-5 py-3 text-[10px] font-bold uppercase tracking-[.14em] text-[#f5f6fc]" data-testid="link-nav-start">Start a project <ArrowUpRight size={13} strokeWidth={1.8} /></a>
+            <a href="#contact" className="solid-button ml-1 inline-flex items-center gap-2 rounded-full bg-[#252946] px-4 py-3 text-[10px] font-bold uppercase tracking-[.14em] text-[#f5f6fc]" data-testid="link-nav-start">Start a project <ArrowUpRight size={13} strokeWidth={1.8} /></a>
           </nav>
           <button type="button" className="relative z-40 rounded-full border border-[#d9d9e8] p-3 text-[#252946] md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="mobile-nav" data-testid="button-toggle-menu">
             {menuOpen ? <X size={19} /> : <Menu size={19} />}
