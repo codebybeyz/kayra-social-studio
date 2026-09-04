@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowDownRight, ArrowUpRight, Check, ChevronDown, Compass, Dribbble, Eye, Figma, Instagram, Linkedin, Mail, Menu, MousePointer2, PenTool, Send, Sparkles, X } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Check, ChevronDown, Compass, Dribbble, Eye, Figma, Instagram, Linkedin, Mail, Menu, MousePointer2, PenTool, Send, Sparkles, X, Youtube } from 'lucide-react';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -17,11 +17,13 @@ const services = [
 ];
 
 const projects = [
-  { id: 'web-01', title: 'Web Project 01', category: 'Web Design', index: '01', tone: 'sky', tag: 'Interface / Experience' },
-  { id: 'social-01', title: 'Social Media Project 01', category: 'Social Media', index: '02', tone: 'lilac', tag: 'Strategy / Content' },
-  { id: 'content-01', title: 'Content Project 01', category: 'Content', index: '03', tone: 'peach', tag: 'Art Direction / Motion' },
-  { id: 'branding-01', title: 'Branding Project 01', category: 'Branding', index: '04', tone: 'ink', tag: 'Identity / Digital' },
-  { id: 'digital-01', title: 'Digital Project 01', category: 'Digital Projects', index: '05', tone: 'violet', tag: 'Concept / Product' },
+  { id: 'youtube-portfolio', title: 'YouTube Projects', category: 'Content', index: '01', tone: 'youtube', tag: 'Video / Creative Projects', platform: 'YouTube', href: 'https://www.youtube.com/channel/UCHIrWLsUakvz_qAnUwMWHwQ', cta: 'Kanalı Gör' },
+  { id: 'instagram-portfolio', title: 'Instagram Projects', category: 'Social Media', index: '02', tone: 'instagram', tag: 'Social / Digital Work', platform: 'Instagram', href: 'https://www.instagram.com/kayrasocialstudio', cta: 'Profili Gör' },
+  { id: 'web-01', title: 'Web Project 01', category: 'Web Design', index: '03', tone: 'sky', tag: 'Interface / Experience' },
+  { id: 'social-01', title: 'Social Media Project 01', category: 'Social Media', index: '04', tone: 'lilac', tag: 'Strategy / Content' },
+  { id: 'content-01', title: 'Content Project 01', category: 'Content', index: '05', tone: 'peach', tag: 'Art Direction / Motion' },
+  { id: 'branding-01', title: 'Branding Project 01', category: 'Branding', index: '06', tone: 'ink', tag: 'Identity / Digital' },
+  { id: 'digital-01', title: 'Digital Project 01', category: 'Digital Projects', index: '07', tone: 'violet', tag: 'Concept / Product' },
 ];
 
 const values = [
@@ -45,9 +47,10 @@ function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; 
   return <div className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
-function ProjectArt({ tone }: { tone: string }) {
+function ProjectArt({ tone, platform }: { tone: string; platform?: string }) {
+  const PlatformIcon = platform === 'YouTube' ? Youtube : platform === 'Instagram' ? Instagram : null;
   return (
-    <div className={`project-art relative h-full min-h-[230px] overflow-hidden ${tone === 'sky' ? 'bg-[#c7edff]' : tone === 'lilac' ? 'bg-[#d8d1ff]' : tone === 'peach' ? 'bg-[#f3dfdf]' : tone === 'ink' ? 'bg-[#343452]' : 'bg-[#c3bbef]'}`}>
+    <div className={`project-art relative h-full min-h-[230px] overflow-hidden ${tone === 'youtube' ? 'bg-[#d8efff]' : tone === 'instagram' ? 'bg-[#e5ddff]' : tone === 'sky' ? 'bg-[#c7edff]' : tone === 'lilac' ? 'bg-[#d8d1ff]' : tone === 'peach' ? 'bg-[#f3dfdf]' : tone === 'ink' ? 'bg-[#343452]' : 'bg-[#c3bbef]'}`}>
       <div className="absolute left-[14%] top-[16%] h-[67%] w-[72%] rotate-[-6deg] rounded-[28px] border border-white/60 bg-white/55 shadow-[12px_22px_35px_rgba(45,47,83,.12)] backdrop-blur-sm">
         <div className="absolute left-[9%] right-[9%] top-[13%] h-2 rounded-full bg-[#6c6a9b]/35" />
         <div className="absolute left-[9%] top-[28%] h-16 w-[54%] rounded-xl bg-white/75" />
@@ -55,6 +58,7 @@ function ProjectArt({ tone }: { tone: string }) {
         <div className="absolute bottom-[15%] left-[9%] h-11 w-[19%] rounded-xl bg-[#a9dbef]/75" />
       </div>
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full border-[18px] border-white/25" />
+      {PlatformIcon && <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white/70 px-3 py-2 text-[#343452] shadow-sm backdrop-blur-sm"><PlatformIcon size={14} strokeWidth={1.8} /><span className="font-mono text-[9px] uppercase tracking-[.14em]">{platform}</span></div>}
       <div className="absolute bottom-6 left-6 font-mono text-[9px] uppercase tracking-[.22em] text-[#343452]/55">KSS / 2024</div>
     </div>
   );
@@ -201,16 +205,20 @@ function Home() {
         <div className="section-wrap">
           <Reveal className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div><p className="eyebrow text-[#b3b0e4]">03 / Selected work</p><h2 className="mt-5 font-serif text-[clamp(3rem,6vw,5.8rem)] leading-none tracking-[-.055em]">Selected <em className="text-[#c9c2ff]">Work</em></h2></div>
-            <p className="max-w-[330px] text-sm leading-6 text-[#c0c2d3]">İleride kendi proje görsellerimi, açıklamalarımı ve linklerimi ekleyebileceğim seçki.</p>
+            <p className="max-w-[330px] text-sm leading-6 text-[#c0c2d3]">Ürettiğim video, sosyal medya ve dijital çalışmalara YouTube ve Instagram üzerinden ulaşabilirsin.</p>
           </Reveal>
           <div className="mt-14 flex flex-wrap gap-2 border-b border-[#454963] pb-5">
             {['All', 'Web Design', 'Social Media', 'Content', 'Branding', 'Digital Projects'].map((category) => <button type="button" key={category} onClick={() => setActiveCategory(category)} className={`rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[.13em] transition-colors ${activeCategory === category ? 'bg-[#c9c2ff] text-[#252946]' : 'text-[#b7b9cb] hover:bg-[#343752] hover:text-white'}`} data-testid={`button-filter-${category.toLowerCase().replaceAll(' ', '-')}`}>{category}</button>)}
           </div>
           <div className="mt-7 grid gap-5 md:grid-cols-2">
-            {filteredProjects.map((project, index) => <Reveal key={project.id} delay={index * 70} className={index === 0 && filteredProjects.length > 1 ? 'md:col-span-2' : ''}><article className={`project-card rounded-[22px] bg-[#353854] ${index === 0 && filteredProjects.length > 1 ? 'grid md:grid-cols-[1.2fr_.8fr]' : ''}`} data-testid={`card-project-${project.id}`}>
-              <div className={index === 0 && filteredProjects.length > 1 ? 'min-h-[310px]' : 'min-h-[245px]'}><ProjectArt tone={project.tone} /></div>
-              <div className="flex flex-col justify-between p-6 md:p-7"><div className="flex items-center justify-between"><span className="font-mono text-[10px] text-[#a8abc0]">{project.index} / {project.category}</span><span className="project-overlay flex h-9 w-9 items-center justify-center rounded-full bg-[#c9c2ff] text-[#252946]"><ArrowUpRight size={15} /></span></div><div className="mt-16"><h3 className="font-serif text-2xl tracking-[-.03em] text-[#f7f8fc]">{project.title}</h3><p className="mt-2 font-mono text-[9px] uppercase tracking-[.16em] text-[#a8abc0]">{project.tag}</p></div></div>
-            </article></Reveal>)}
+            {filteredProjects.map((project, index) => {
+              const cardClassName = `project-card rounded-[22px] bg-[#353854] ${index === 0 && filteredProjects.length > 1 ? 'grid md:grid-cols-[1.2fr_.8fr]' : ''}`;
+              const cardContent = <>
+                <div className={index === 0 && filteredProjects.length > 1 ? 'min-h-[310px]' : 'min-h-[245px]'}><ProjectArt tone={project.tone} platform={project.platform} /></div>
+                <div className="flex flex-col justify-between p-6 md:p-7"><div className="flex items-center justify-between"><span className="font-mono text-[10px] text-[#a8abc0]">{project.index} / {project.category}</span><span className="project-overlay flex h-9 w-9 items-center justify-center rounded-full bg-[#c9c2ff] text-[#252946]"><ArrowUpRight size={15} /></span></div><div className="mt-16"><h3 className="font-serif text-2xl tracking-[-.03em] text-[#f7f8fc]">{project.title}</h3><p className="mt-2 font-mono text-[9px] uppercase tracking-[.16em] text-[#a8abc0]">{project.tag}</p>{project.href && <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-[#c9c2ff]">{project.cta} <ArrowUpRight size={13} /></span>}</div></div>
+              </>;
+              return <Reveal key={project.id} delay={index * 70} className={index === 0 && filteredProjects.length > 1 ? 'md:col-span-2' : ''}>{project.href ? <a href={project.href} target="_blank" rel="noreferrer" className={cardClassName} data-testid={`card-project-${project.id}`}>{cardContent}</a> : <article className={cardClassName} data-testid={`card-project-${project.id}`}>{cardContent}</article>}</Reveal>;
+            })}
           </div>
         </div>
       </section>
