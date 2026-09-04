@@ -460,8 +460,9 @@ body {
 
 .logo-img {
   width: 174px;
-  height: auto;
-  object-fit: contain;
+  height: 135px;
+  object-fit: cover;
+  object-position: center top;
   mix-blend-mode: multiply;
   border-radius: 20px;
 }
@@ -608,6 +609,7 @@ body {
   }
   .logo-img {
     width: 142px;
+    height: 116px;
   }
   .hero-glow-a {
     width: 360px;
