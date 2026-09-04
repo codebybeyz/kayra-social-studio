@@ -517,6 +517,25 @@ body {
   background-color: rgba(246,244,255,.88);
 }
 
+.service-image {
+  transition: transform .65s cubic-bezier(.22,1,.36,1), filter .35s ease;
+  filter: saturate(.82) contrast(.96);
+}
+
+.service-image-shade {
+  background: linear-gradient(180deg, rgba(37,41,70,.24), rgba(37,41,70,.04) 52%, rgba(37,41,70,.26));
+  transition: opacity .35s ease;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.06);
+  filter: saturate(1) contrast(1);
+}
+
+.service-card:hover .service-image-shade {
+  opacity: .7;
+}
+
 .service-card .service-arrow {
   transition: transform .3s ease, background-color .3s ease;
 }

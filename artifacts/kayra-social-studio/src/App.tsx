@@ -9,11 +9,11 @@ const navItems = [
 ];
 
 const services = [
-  { number: '01', title: 'SOCIAL MEDIA', description: 'Sosyal medya yönetimi, içerik planlama, içerik üretimi ve marka iletişimi.', icon: Compass },
-  { number: '02', title: 'CONTENT CREATION', description: 'Markalar için yaratıcı video, görsel ve dijital içerikler.', icon: Sparkles },
-  { number: '03', title: 'WEB DESIGN', description: 'Modern, hızlı, responsive ve kullanıcı deneyimi odaklı web siteleri.', icon: MousePointer2 },
-  { number: '04', title: 'DIGITAL DESIGN', description: 'Markaların dijital dünyadaki görünümünü güçlendiren yaratıcı tasarımlar.', icon: PenTool },
-  { number: '05', title: 'DIGITAL PROJECTS', description: "Markaya özel dijital fikirler, landing page'ler ve özel dijital çözümler.", icon: Figma },
+  { number: '01', title: 'SOCIAL MEDIA', description: 'Sosyal medya yönetimi, içerik planlama, içerik üretimi ve marka iletişimi.', icon: Compass, image: '/assets/service-social-media.jpg' },
+  { number: '02', title: 'CONTENT CREATION', description: 'Markalar için yaratıcı video, görsel ve dijital içerikler.', icon: Sparkles, image: '/assets/service-content-creation.jpg' },
+  { number: '03', title: 'WEB DESIGN', description: 'Modern, hızlı, responsive ve kullanıcı deneyimi odaklı web siteleri.', icon: MousePointer2, image: '/assets/service-web-design.jpg' },
+  { number: '04', title: 'DIGITAL DESIGN', description: 'Markaların dijital dünyadaki görünümünü güçlendiren yaratıcı tasarımlar.', icon: PenTool, image: '/assets/service-digital-design.jpg' },
+  { number: '05', title: 'DIGITAL PROJECTS', description: "Markaya özel dijital fikirler, landing page'ler ve özel dijital çözümler.", icon: Figma, image: '/assets/service-digital-projects.jpg' },
 ];
 
 const projects = [
@@ -184,9 +184,13 @@ function Home() {
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
             {services.map((service, index) => {
               const Icon = service.icon;
-              return <Reveal key={service.title} delay={index * 60} className="h-full"><article className="service-card group flex h-full min-h-[285px] flex-col justify-between rounded-[22px] border border-[#dedfeb] bg-white/65 p-6 md:p-7" data-testid={`card-service-${index + 1}`}>
-                <div className="flex items-start justify-between"><span className="font-mono text-[10px] text-[#9899b5]">{service.number}</span><span className="service-arrow flex h-10 w-10 items-center justify-center rounded-full bg-[#eef0fb] text-[#7774a6]"><Icon size={17} strokeWidth={1.5} /></span></div>
-                <div><h3 className="text-[13px] font-extrabold tracking-[.11em] text-[#343754]">{service.title}</h3><p className="mt-4 text-[13px] leading-6 text-[#767a92]">{service.description}</p></div>
+              return <Reveal key={service.title} delay={index * 60} className="h-full"><article className="service-card group flex h-full min-h-[390px] flex-col overflow-hidden rounded-[22px] border border-[#dedfeb] bg-white/65" data-testid={`card-service-${index + 1}`}>
+                <div className="service-image-wrap relative h-[155px] shrink-0 overflow-hidden">
+                  <img src={service.image} alt={`${service.title.toLowerCase()} hizmeti için yaratıcı çalışma fotoğrafı`} className="service-image h-full w-full object-cover" />
+                  <div className="service-image-shade absolute inset-0" />
+                  <div className="absolute inset-x-5 top-5 flex items-start justify-between"><span className="font-mono text-[10px] text-white/80">{service.number}</span><span className="service-arrow flex h-10 w-10 items-center justify-center rounded-full bg-white/75 text-[#7774a6]"><Icon size={17} strokeWidth={1.5} /></span></div>
+                </div>
+                <div className="flex flex-1 flex-col justify-end p-6 md:p-7"><h3 className="text-[13px] font-extrabold tracking-[.11em] text-[#343754]">{service.title}</h3><p className="mt-4 text-[13px] leading-6 text-[#767a92]">{service.description}</p></div>
               </article></Reveal>;
             })}
           </div>
