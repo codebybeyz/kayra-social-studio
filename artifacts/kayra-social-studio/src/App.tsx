@@ -23,10 +23,6 @@ const projects = [
   { id: 'therapy-01', title: 'Therapy Visual', category: 'Content', index: '04', tone: 'ink', tag: 'Art Direction / Social Media', image: '/assets/project-therapy.png', imageAlt: 'Terapi temalı sosyal medya tasarımı' },
   { id: 'street-animals-01', title: 'Street Animal Awareness', category: 'Content', index: '05', tone: 'sky', tag: 'Campaign / Content', image: '/assets/project-street-animals.jpg', imageAlt: 'Sokak hayvanları günü farkındalık tasarımı' },
   { id: 'dental-01', title: 'Dental Social Post', category: 'Digital Projects', index: '06', tone: 'violet', tag: 'Digital Design / Content', image: '/assets/project-dental.jpg', imageAlt: 'Diş kliniği için sosyal medya tasarımı' },
-  { id: 'web-01', title: 'Web Project 01', category: 'Web Design', index: '07', tone: 'sky', tag: 'Interface / Experience' },
-  { id: 'social-01', title: 'Social Media Project 01', category: 'Social Media', index: '08', tone: 'lilac', tag: 'Strategy / Content' },
-  { id: 'branding-01', title: 'Branding Project 01', category: 'Branding', index: '09', tone: 'ink', tag: 'Identity / Digital' },
-  { id: 'digital-01', title: 'Digital Project 01', category: 'Digital Projects', index: '10', tone: 'violet', tag: 'Concept / Product' },
 ];
 
 const values = [
@@ -211,7 +207,7 @@ function Home() {
             <p className="max-w-[330px] text-sm leading-6 text-[#c0c2d3]">Ürettiğim video, sosyal medya ve dijital çalışmalara YouTube ve Instagram üzerinden ulaşabilirsin.</p>
           </Reveal>
           <div className="mt-14 flex flex-wrap gap-2 border-b border-[#454963] pb-5">
-            {['All', 'Web Design', 'Social Media', 'Content', 'Branding', 'Digital Projects'].map((category) => <button type="button" key={category} onClick={() => setActiveCategory(category)} className={`rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[.13em] transition-colors ${activeCategory === category ? 'bg-[#c9c2ff] text-[#252946]' : 'text-[#b7b9cb] hover:bg-[#343752] hover:text-white'}`} data-testid={`button-filter-${category.toLowerCase().replaceAll(' ', '-')}`}>{category}</button>)}
+            {['All', 'Social Media', 'Content', 'Digital Projects'].map((category) => <button type="button" key={category} onClick={() => setActiveCategory(category)} className={`rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[.13em] transition-colors ${activeCategory === category ? 'bg-[#c9c2ff] text-[#252946]' : 'text-[#b7b9cb] hover:bg-[#343752] hover:text-white'}`} data-testid={`button-filter-${category.toLowerCase().replaceAll(' ', '-')}`}>{category}</button>)}
           </div>
           <div className="mt-7 grid gap-5 md:grid-cols-2">
             {filteredProjects.map((project, index) => {
