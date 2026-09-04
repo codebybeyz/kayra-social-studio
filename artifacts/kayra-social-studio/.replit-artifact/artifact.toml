@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Kayra Social Studio"
+description = "Kayra Social Studio için pastel mavi ve lavanta tonlarında, modern ve premium bir creative digital studio portfolyo sitesi."
+version = "1.0.0"
+id = "artifacts/kayra-social-studio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22913
+
+[services.development]
+run = "pnpm --filter @workspace/kayra-social-studio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/kayra-social-studio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/kayra-social-studio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22913"
+BASE_PATH = "/"
