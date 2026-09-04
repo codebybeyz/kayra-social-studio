@@ -459,11 +459,11 @@ body {
 }
 
 .logo-img {
-  width: 174px;
+  width: 150px;
   height: 135px;
-  object-fit: cover;
-  object-position: center top;
-  mix-blend-mode: multiply;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: normal;
   border-radius: 20px;
 }
 
@@ -608,8 +608,8 @@ body {
     letter-spacing: -.06em;
   }
   .logo-img {
-    width: 142px;
-    height: 116px;
+    width: 122px;
+    height: 110px;
   }
   .hero-glow-a {
     width: 360px;

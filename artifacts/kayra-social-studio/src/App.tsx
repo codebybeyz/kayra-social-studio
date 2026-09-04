@@ -115,13 +115,13 @@ function Home() {
   return (
     <main className="studio-shell min-h-[100dvh] bg-[#f3faff] text-[#252946]">
       <header className="relative z-30">
-        <div className="section-wrap relative flex items-center justify-between py-7">
-          <a href="#home" aria-label="Kayra Social Studio ana sayfa" className="relative left-1/2 z-40 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2" data-testid="link-brand">
+        <div className="section-wrap flex items-center justify-between py-7">
+          <a href="#home" aria-label="Kayra Social Studio ana sayfa" className="relative z-40" data-testid="link-brand">
             <img src="/assets/kayra-logo.png" alt="KAYRA SOCIAL STUDIO" className="logo-img" />
           </a>
-          <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Ana navigasyon">
+          <nav className="hidden items-center gap-9 md:flex" aria-label="Ana navigasyon">
             {navItems.map((item) => <a key={item.href} href={item.href} className="nav-link text-[11px] font-semibold uppercase tracking-[.15em]" data-testid={`link-nav-${item.label.toLowerCase()}`}>{item.label}</a>)}
-            <a href="#contact" className="solid-button ml-1 inline-flex items-center gap-2 rounded-full bg-[#252946] px-4 py-3 text-[10px] font-bold uppercase tracking-[.14em] text-[#f5f6fc]" data-testid="link-nav-start">Start a project <ArrowUpRight size={13} strokeWidth={1.8} /></a>
+            <a href="#contact" className="solid-button ml-3 inline-flex items-center gap-2 rounded-full bg-[#252946] px-5 py-3 text-[10px] font-bold uppercase tracking-[.14em] text-[#f5f6fc]" data-testid="link-nav-start">Start a project <ArrowUpRight size={13} strokeWidth={1.8} /></a>
           </nav>
           <button type="button" className="relative z-40 rounded-full border border-[#d9d9e8] p-3 text-[#252946] md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="mobile-nav" data-testid="button-toggle-menu">
             {menuOpen ? <X size={19} /> : <Menu size={19} />}
@@ -156,7 +156,7 @@ function Home() {
               <div className="absolute left-[5%] top-[20%] rounded-full bg-[#f3e3ef] px-4 py-2 font-mono text-[9px] uppercase tracking-[.17em] text-[#7774a6] shadow-sm">thought → form</div>
               <div className="absolute bottom-[13%] right-[1%] rounded-full bg-[#d7f1fb] px-4 py-2 font-mono text-[9px] uppercase tracking-[.17em] text-[#59627d] shadow-sm">soft / sharp</div>
               <div className="absolute left-1/2 top-1/2 flex w-[61%] -translate-x-1/2 -translate-y-1/2 rotate-[-5deg] items-center justify-center rounded-[30px] bg-white/70 p-7 shadow-[0_24px_60px_rgba(72,71,117,.14)] backdrop-blur-sm">
-                <img src="/assets/kayra-logo-poster.png" alt="KAYRA SOCIAL STUDIO sosyal medya tasarımı" className="w-full rounded-[20px]" />
+                <img src="/assets/kayra-logo-poster.png" alt="KAYRA SOCIAL STUDIO" className="w-full rounded-[20px]" />
               </div>
               <div className="absolute right-[15%] top-[9%] h-4 w-4 rounded-full border-[3px] border-[#9e98d8] bg-[#f7f8fc]" />
               <div className="absolute bottom-[22%] left-[13%] h-3 w-3 rounded-full bg-[#a9dff2]" />
