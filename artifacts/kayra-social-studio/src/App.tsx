@@ -109,7 +109,7 @@ function Home() {
   const filteredProjects = activeCategory === 'All' ? projects : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <main className="studio-shell min-h-[100dvh] bg-[#f7f8fc] text-[#252946]">
+    <main className="studio-shell min-h-[100dvh] bg-[#f3faff] text-[#252946]">
       <header className="relative z-30">
         <div className="section-wrap flex items-center justify-between py-7">
           <a href="#home" aria-label="Kayra Social Studio ana sayfa" className="relative z-40" data-testid="link-brand">
@@ -124,14 +124,14 @@ function Home() {
             <span className="sr-only">Menüyü aç</span>
           </button>
         </div>
-        {menuOpen && <nav id="mobile-nav" className="mobile-menu absolute left-0 right-0 top-full border-y border-[#ddddec] bg-[#f7f8fc]/95 px-[18px] py-7 shadow-lg backdrop-blur-md md:hidden" aria-label="Mobil navigasyon">
+        {menuOpen && <nav id="mobile-nav" className="mobile-menu absolute left-0 right-0 top-full border-y border-[#d6e8f2] bg-[#f0f9ff]/95 px-[18px] py-7 shadow-lg backdrop-blur-md md:hidden" aria-label="Mobil navigasyon">
           <div className="mx-auto flex max-w-[560px] flex-col gap-5">
             {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="text-sm font-semibold uppercase tracking-[.15em] text-[#4e526e]" data-testid={`link-mobile-${item.label.toLowerCase()}`}>{item.label}</a>)}
           </div>
         </nav>}
       </header>
 
-      <section id="home" className="relative flex min-h-[690px] items-center overflow-hidden pb-24 pt-10 md:min-h-[760px] md:pb-28 md:pt-0">
+      <section id="home" className="relative flex min-h-[690px] items-center overflow-hidden bg-[#f3faff] pb-24 pt-10 md:min-h-[760px] md:pb-28 md:pt-0">
         <div className="hero-glow hero-glow-a" /><div className="hero-glow hero-glow-b" />
         <div className="section-wrap relative grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
           <Reveal className="max-w-[690px]">
@@ -175,7 +175,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-[#f7f8fc] py-28 md:py-40">
+      <section id="services" className="bg-[#eff9ff] py-28 md:py-40">
         <div className="section-wrap">
           <Reveal className="mb-14 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div><p className="eyebrow">02 / Capabilities</p><h2 className="mt-5 font-serif text-[clamp(3rem,6vw,5.8rem)] leading-none tracking-[-.055em]">Ne <em className="text-[#7774a6]">Yapıyorum?</em></h2></div>
@@ -224,7 +224,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f7f8fc] py-28 md:py-40">
+      <section className="bg-[#f3faff] py-28 md:py-40">
         <div className="section-wrap">
           <Reveal className="flex items-end justify-between gap-6"><div><p className="eyebrow">05 / The process</p><h2 className="mt-5 font-serif text-[clamp(3rem,6vw,5.8rem)] leading-none tracking-[-.055em]">Nasıl <em className="text-[#7774a6]">Çalışıyorum?</em></h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.2em] text-[#a2a3b8] md:block">A clear way forward</span></Reveal>
           <div className="mt-16 grid border-t border-[#dfe0e9] md:grid-cols-4">
@@ -241,7 +241,7 @@ function Home() {
         </Reveal>
       </section>
 
-      <section id="contact" className="bg-[#f7f8fc] py-28 md:py-40">
+      <section id="contact" className="bg-[#f3faff] py-28 md:py-40">
         <div className="section-wrap grid gap-16 md:grid-cols-[.8fr_1.2fr] md:gap-24">
           <Reveal><p className="eyebrow">07 / Contact</p><h2 className="mt-7 font-serif text-[clamp(3rem,6vw,5.8rem)] leading-[.94] tracking-[-.055em]">Let's work<br /><em className="text-[#7774a6]">together.</em></h2><p className="mt-8 max-w-[310px] text-sm leading-7 text-[#777a92]">Aklınızdaki projeyi, ihtiyacı veya sadece fikri anlatın. Size geri dönüş yapmak için formu doldurabilirsiniz.</p><div className="mt-12 flex items-center gap-4 text-[#7774a6]"><a href="mailto:hello@kayrasocialstudio.com" className="transition-colors hover:text-[#252946]" aria-label="E-mail gönder" data-testid="link-email"><Mail size={18} strokeWidth={1.5} /></a><a href="#" onClick={(event) => event.preventDefault()} aria-label="Instagram bağlantısı yakında" className="transition-colors hover:text-[#252946]" data-testid="link-instagram"><Instagram size={18} strokeWidth={1.5} /></a><a href="#" onClick={(event) => event.preventDefault()} aria-label="LinkedIn bağlantısı yakında" className="transition-colors hover:text-[#252946]" data-testid="link-linkedin"><Linkedin size={18} strokeWidth={1.5} /></a><a href="#" onClick={(event) => event.preventDefault()} aria-label="Dribbble bağlantısı yakında" className="transition-colors hover:text-[#252946]" data-testid="link-dribbble"><Dribbble size={18} strokeWidth={1.5} /></a></div></Reveal>
           <Reveal delay={100}><div className="rounded-[25px] border border-[#dedfeb] bg-white/65 p-6 md:p-10">
