@@ -152,7 +152,7 @@ function Home() {
               <div className="absolute left-[5%] top-[20%] rounded-full bg-[#f3e3ef] px-4 py-2 font-mono text-[9px] uppercase tracking-[.17em] text-[#7774a6] shadow-sm">thought → form</div>
               <div className="absolute bottom-[13%] right-[1%] rounded-full bg-[#d7f1fb] px-4 py-2 font-mono text-[9px] uppercase tracking-[.17em] text-[#59627d] shadow-sm">soft / sharp</div>
               <div className="absolute left-1/2 top-1/2 flex w-[61%] -translate-x-1/2 -translate-y-1/2 rotate-[-5deg] items-center justify-center rounded-[30px] bg-white/70 p-7 shadow-[0_24px_60px_rgba(72,71,117,.14)] backdrop-blur-sm">
-                <img src="/assets/kayra-logo.png" alt="KAYRA SOCIAL STUDIO logo" className="w-full" />
+                <img src="/assets/kayra-logo.png" alt="KAYRA SOCIAL STUDIO logo" className="w-full rounded-[5px]" />
               </div>
               <div className="absolute right-[15%] top-[9%] h-4 w-4 rounded-full border-[3px] border-[#9e98d8] bg-[#f7f8fc]" />
               <div className="absolute bottom-[22%] left-[13%] h-3 w-3 rounded-full bg-[#a9dff2]" />
