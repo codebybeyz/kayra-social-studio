@@ -95,19 +95,53 @@ function Home() {
     if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
   };
 
-  const submitForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const nextErrors: FormErrors = {};
-    if (!form.name.trim()) nextErrors.name = 'Lütfen adınızı yazın.';
-    if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) nextErrors.email = 'Geçerli bir e-mail adresi yazın.';
-    if (!form.project.trim()) nextErrors.project = 'Proje veya hizmet alanını belirtin.';
-    if (!form.message.trim() || form.message.trim().length < 12) nextErrors.message = 'Mesajınız en az 12 karakter olmalı.';
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      setSent(true);
-      setForm({ name: '', email: '', project: '', message: '' });
+  const submitForm = async (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  const nextErrors: FormErrors = {};
+
+  if (!form.name.trim()) nextErrors.name = 'Lütfen adınızı yazın.';
+  if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) {
+    nextErrors.email = 'Geçerli bir e-mail adresi yazın.';
+  }
+  if (!form.project.trim()) {
+    nextErrors.project = 'Proje veya hizmet alanını belirtin.';
+  }
+  if (!form.message.trim() || form.message.trim().length < 12) {
+    nextErrors.message = 'Mesajınız en az 12 karakter olmalı.';
+  }
+
+  setErrors(nextErrors);
+
+  if (Object.keys(nextErrors).length > 0) return;
+
+  try {
+    const response = await fetch('https://formspree.io/f/xrpgwkaq', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        project: form.project,
+        message: form.message,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Form gönderilemedi');
     }
-  };
+
+    setSent(true);
+    setForm({ name: '', email: '', project: '', message: '' });
+  } catch {
+    setErrors({
+      message: 'Mesaj gönderilemedi. Lütfen tekrar deneyin.',
+    });
+  }
+};
 
   const filteredProjects = activeCategory === 'All' ? projects : projects.filter((project) => project.category === activeCategory);
 
